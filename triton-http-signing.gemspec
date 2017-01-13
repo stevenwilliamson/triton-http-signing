@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Provides http-signing as used by the joyent triton cloudapi}
   spec.description   = %q{Allows http requests to be signing using an ssh key. Supports signing using ssh-agent.}
-  spec.homepage      = "github.com/stevenwilliamson/triton-http-signing"
+  spec.homepage      = "https://github.com/stevenwilliamson/triton-http-signing"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

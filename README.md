@@ -1,8 +1,10 @@
 # Triton::Http::Signing
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/triton/http/signing`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ruby gem that supports http-signing to auth against the Joyent Triton Cloudapi. As described in their API docs in [Appendix C](https://apidocs.joyent.com/cloudapi/#appendix-c-http-signature-authentication).
 
-TODO: Delete this and the text above, and describe your gem
+The gem uses ssh-agent to sign requests avoiding having to touch the private key.
+
+This gem is a works in progress and currently only supports ssh-rsa keys. Adding support for other key types should not be too difficult.
 
 ## Installation
 
@@ -22,7 +24,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+```ruby
+require "triton/http/signing"
+
+signer = HttpSigner.new("account", "~/.ssh/id_rsa.pub")
+signature_header = signer.signature("Sat, 10 Jan 2017 23:56:29 GMT")
+```
 
 ## Development
 
@@ -30,9 +38,15 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### Tests
+
+```
+bundle exec rspec
+```
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/triton-http-signing.
+Bug reports and pull requests are welcome on GitHub at https://github.com/stevenwilliamson/triton-http-signing.
 
 
 ## License
